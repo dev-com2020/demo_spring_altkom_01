@@ -2,11 +2,11 @@
 
 <ul>
     {{#videos}}
-        <li>{{name}}</li>
+        <li>{{title}}</li>
     {{/videos}}
 </ul>
 
 <form action="/new-video" method="post">
-    <input type="text" name="name">
+    <input type="text" name="title">
     <button type="submit">Submit</button>
 </form>

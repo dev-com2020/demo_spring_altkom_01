@@ -1,7 +1,7 @@
 Feature: Zarządzanie wideo
   Scenario: Pobieranie wszystkich filmów
     Given istnieją filmy w bazie danych
-    When wysyłam żądanie GET na /api/videos
+    When wysyłam żądanie GET
     Then otrzymuję listę filmów
 
 #    Scenario: Dodawanie nowego filmu
