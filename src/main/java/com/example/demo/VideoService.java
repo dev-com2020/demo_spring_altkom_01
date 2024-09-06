@@ -8,19 +8,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class VideoService {
 
-    private List<Video> videos = List.of( //
-            new Video("Need HELP with your SPRING BOOT 3 App?"), //
-            new Video("Don't do THIS to your own CODE!"), //
-            new Video("SECRETS to fix BROKEN CODE!"));
+    private final VideoRepository videoRepository;
+
+    private List<Video> videos = new ArrayList<>();
+
+    public VideoService(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
+    }
 
     public List<Video> getVideos() {
         return videos;
     }
 
     public Video create(Video newVideo) {
-        List<Video> extend = new ArrayList<>(videos);
-        extend.add(newVideo);
-        this.videos = List.copyOf(extend);
+        videos.add(newVideo);
         return newVideo;
+    }
+
+
+    public Video getVideo(Long id) {
+        return videoRepository.findById(id).orElseThrow(() -> new VideoNotFoundException(id));
+    }
+
+    public Video deleteVideo(Long id) {
+        videoRepository.deleteById(id);
+        return null;
     }
 }

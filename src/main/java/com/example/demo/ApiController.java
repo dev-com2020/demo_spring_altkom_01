@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +21,16 @@ public class ApiController {
     public Video newVideo(@RequestBody Video newVideo) {
         return videoService.create(newVideo);
     }
+
+    @GetMapping("/api/videos/{id}")
+    public Video getVideo(@PathVariable Long id) {
+        return videoService.getVideo(id);
+    }
+
+    @DeleteMapping("/api/videos/{id}")
+    public Video newVideo(@PathVariable Long id) {
+        return videoService.deleteVideo(id);
+    }
+
+
 }
